@@ -1,12 +1,21 @@
 import TodoItem from "./TodoItem";
 import { v4 } from "uuid";
 
-const TodoItems = ({ items }) => {
+const TodoItems = ({ items, onDeleteItem }) => {
   return (
     <div className="items-container">
-      {items.map((item) => (
-        <TodoItem key={v4()} name={item.name} dueDate={item.dueDate} />
-      ))}
+      {items.map((item) => {
+        const uuid = v4();
+        return (
+          <TodoItem
+            key={uuid}
+            id={uuid}
+            name={item.name}
+            dueDate={item.dueDate}
+            onDeleteItem={onDeleteItem}
+          />
+        );
+      })}
     </div>
   );
 };
