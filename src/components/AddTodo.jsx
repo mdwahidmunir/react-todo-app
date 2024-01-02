@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { v4 } from "uuid";
 
 const AddTodo = ({ onAddItem: handleAddItem }) => {
   const [input, setInput] = useState("");
@@ -16,6 +17,7 @@ const AddTodo = ({ onAddItem: handleAddItem }) => {
 
   const handleAddButtonClick = () => {
     const item = {
+      id: v4(),
       name: input,
       dueDate: date,
     };

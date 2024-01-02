@@ -1,4 +1,4 @@
-const TodoItem1 = ({ name, dueDate, id, onDeleteItem: handleRemoveItem }) => {
+const TodoItem1 = ({ uid, name, dueDate, onDeleteItem: handleRemoveItem }) => {
   return (
     <div className="container">
       <div className="row kg-row">
@@ -6,7 +6,7 @@ const TodoItem1 = ({ name, dueDate, id, onDeleteItem: handleRemoveItem }) => {
         <div className="col-4">{dueDate}</div>
         <div
           className="col-2 btn btn-danger kg-button"
-          onClick={() => handleRemoveItem(name)}
+          onClick={() => handleRemoveItem(uid)}
         >
           Remove
         </div>

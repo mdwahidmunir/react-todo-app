@@ -5,11 +5,13 @@ const TodoItems = ({ items, onDeleteItem }) => {
   return (
     <div className="items-container">
       {items.map((item) => {
-        const uuid = v4();
+        // const uuid = v4();
         return (
           <TodoItem
-            key={uuid}
-            id={uuid}
+            // key={uuid}
+            // id={uuid}
+            key={item.id}
+            uid={item.id}
             name={item.name}
             dueDate={item.dueDate}
             onDeleteItem={onDeleteItem}

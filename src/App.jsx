@@ -29,8 +29,8 @@ function App() {
     setItems(newItems);
   };
 
-  const handleRemoveItem = (item_name) => {
-    const newItems = items.filter((item) => item.name !== item_name);
+  const handleRemoveItem = (item_id) => {
+    const newItems = items.filter((item) => item.id !== item_id);
     setItems(newItems);
   };
 
