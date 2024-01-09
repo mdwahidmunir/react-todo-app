@@ -1,6 +1,6 @@
 import { MdDelete } from "react-icons/md";
 
-const TodoItem1 = ({ uid, name, dueDate, onDeleteItem: handleRemoveItem }) => {
+const TodoItem = ({ uid, name, dueDate, onDeleteItem: handleRemoveItem }) => {
   return (
     <div className="container">
       <div className="row kg-row">
@@ -17,4 +17,4 @@ const TodoItem1 = ({ uid, name, dueDate, onDeleteItem: handleRemoveItem }) => {
   );
 };
 
-export default TodoItem1;
+export default TodoItem;

@@ -1,57 +1,38 @@
 import { MdOutlineAddCircleOutline } from "react-icons/md";
-import { useState } from "react";
+import { useRef } from "react";
 import { v4 } from "uuid";
 
 const AddTodo = ({ onAddItem: handleAddItem }) => {
-  const [input, setInput] = useState("");
-  const [date, setDate] = useState("");
+  const input = useRef("");
+  const date = useRef("");
 
-  const handleInputChange = (event) => {
-    const newInput = event.target.value;
-    setInput(newInput);
-  };
-
-  const handleDateChange = (event) => {
-    const newDate = event.target.value;
-    setDate(newDate);
-  };
-
-  const handleAddButtonClick = () => {
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    console.log("Here");
     const item = {
       id: v4(),
-      name: input,
-      dueDate: date,
+      name: input.current.value,
+      dueDate: date.current.value,
     };
+    console.log(item);
     handleAddItem(item);
-    setInput("");
-    setDate("");
+    input.current.value = "";
+    date.current.value = "";
   };
 
   return (
     <div className="container text-center">
-      <div className="row kg-row">
+      <form className="row kg-row" onSubmit={(event) => handleSubmit(event)}>
         <div className="col-6">
-          <input
-            type="text"
-            placeholder="Add Note...."
-            value={input}
-            onChange={(event) => handleInputChange(event)}
-          ></input>
+          <input ref={input} type="text" placeholder="Add Note...."></input>
         </div>
         <div className="col-4">
-          <input
-            type="date"
-            value={date}
-            onChange={(event) => handleDateChange(event)}
-          ></input>
+          <input ref={date} type="date"></input>
         </div>
-        <div
-          className="col-2 btn btn-success kg-button"
-          onClick={handleAddButtonClick}
-        >
+        <button className="col-2 btn btn-success kg-button">
           Add <MdOutlineAddCircleOutline />
-        </div>
-      </div>
+        </button>
+      </form>
     </div>
   );
 };
