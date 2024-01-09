@@ -1,3 +1,4 @@
+import { MdOutlineAddCircleOutline } from "react-icons/md";
 import { useState } from "react";
 import { v4 } from "uuid";
 
@@ -48,7 +49,7 @@ const AddTodo = ({ onAddItem: handleAddItem }) => {
           className="col-2 btn btn-success kg-button"
           onClick={handleAddButtonClick}
         >
-          Add
+          Add <MdOutlineAddCircleOutline />
         </div>
       </div>
     </div>
