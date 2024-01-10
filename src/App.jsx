@@ -25,13 +25,27 @@ function App() {
   const [items, setItems] = useState(INITIAL_ITEMS);
 
   const handleAddItem = (item) => {
-    const newItems = [item, ...items];
-    setItems(newItems);
+    // Method 1
+    // const newItems = [item, ...items];
+    // setItems(newItems);
+
+    // Method 2 NOTE: This is recommended when your state depends on the previous state
+    setItems((prevState) => {
+      const newItems = [item, ...prevState];
+      return newItems;
+    });
   };
 
   const handleRemoveItem = (item_id) => {
-    const newItems = items.filter((item) => item.id !== item_id);
-    setItems(newItems);
+    // Method - 1
+    // const newItems = items.filter((item) => item.id !== item_id);
+    // setItems(newItems);
+
+    // Method 2
+    setItems((prevState) => {
+      const newItems = items.filter((item) => item.id !== item_id);
+      return newItems;
+    });
   };
 
   return (
