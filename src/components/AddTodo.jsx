@@ -8,13 +8,11 @@ const AddTodo = ({ onAddItem: handleAddItem }) => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    console.log("Here");
     const item = {
       id: v4(),
       name: input.current.value,
       dueDate: date.current.value,
     };
-    console.log(item);
     handleAddItem(item);
     input.current.value = "";
     date.current.value = "";
