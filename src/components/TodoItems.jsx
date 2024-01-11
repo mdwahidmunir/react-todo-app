@@ -1,20 +1,18 @@
 import TodoItem from "./TodoItem";
-import { v4 } from "uuid";
+import { useContext } from "react";
+import { TodoItemsContext } from "../store/todoItemsStore";
 
-const TodoItems = ({ items, onDeleteItem }) => {
+const TodoItems = () => {
+  const { todoItems } = useContext(TodoItemsContext);
   return (
     <div className="items-container">
-      {items.map((item) => {
-        // const uuid = v4();
+      {todoItems.map((item) => {
         return (
           <TodoItem
-            // key={uuid}
-            // id={uuid}
             key={item.id}
             uid={item.id}
             name={item.name}
             dueDate={item.dueDate}
-            onDeleteItem={onDeleteItem}
           />
         );
       })}
