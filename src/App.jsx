@@ -5,6 +5,7 @@ import TodoItems from "./components/TodoItems";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { useState } from "react";
 import Welcome from "./components/Welcome";
+import { TodoItemsContext } from "./store/todoItemsStore";
 
 const INITIAL_ITEMS = [
   // {
@@ -24,7 +25,7 @@ const INITIAL_ITEMS = [
 function App() {
   const [items, setItems] = useState(INITIAL_ITEMS);
 
-  const handleAddItem = (item) => {
+  const addItem = (item) => {
     // Method 1
     // const newItems = [item, ...items];
     // setItems(newItems);
@@ -36,7 +37,7 @@ function App() {
     });
   };
 
-  const handleRemoveItem = (item_id) => {
+  const removeItem = (item_id) => {
     // Method - 1
     // const newItems = items.filter((item) => item.id !== item_id);
     // setItems(newItems);
@@ -49,17 +50,19 @@ function App() {
   };
 
   return (
-    <>
+    <TodoItemsContext.Provider
+      value={{
+        todoItems: items,
+        addItems: addItem,
+        deleteItems: removeItem,
+      }}
+    >
       <center className="todo-container">
         <AppName />
-        <AddTodo onAddItem={handleAddItem} />
-        {items.length === 0 ? (
-          <Welcome className="lead" />
-        ) : (
-          <TodoItems items={items} onDeleteItem={handleRemoveItem} />
-        )}
+        <AddTodo />
+        {items.length === 0 ? <Welcome className="lead" /> : <TodoItems />}
       </center>
-    </>
+    </TodoItemsContext.Provider>
   );
 }
 
