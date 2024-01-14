@@ -1,6 +1,15 @@
+import { useContext } from "react";
+import { TodoItemsContext } from "../store/todoItemsStore";
+
 const Welcome = ({ className }) => {
+  const { todoItems } = useContext(TodoItemsContext);
+
   return (
-    <p className={className}>Welcome to the todo App ! Enjoy your Notes</p>
+    <>
+      {todoItems.length === 0 && (
+        <p className={className}>Welcome to the todo App ! Enjoy your Notes</p>
+      )}
+    </>
   );
 };
 
